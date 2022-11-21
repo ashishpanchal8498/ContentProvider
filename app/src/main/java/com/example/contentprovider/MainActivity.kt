@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonUpdate.setOnClickListener {
+            cv.put(AcronymProvider.NAME,editTextName.text.toString())
             cv.put(AcronymProvider.DESIGNATION,editTextDesignation.text.toString())
             contentResolver.update(AcronymProvider.CONTENT_URI,cv,"NAME = ?", arrayOf(editTextName.text.toString()))
             contentResolver.update(AcronymProvider.CONTENT_URI,cv,"DESIGNATION = ?", arrayOf(editTextDesignation.text.toString()))
