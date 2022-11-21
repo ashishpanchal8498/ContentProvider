@@ -1,5 +1,6 @@
 package com.example.contentprovider
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.os.Bundle
 import android.widget.Button
@@ -7,8 +8,10 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("Recycle")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val editTextName: EditText = findViewById(R.id.editTextName)
         val editTextDesignation: EditText = findViewById(R.id.editTextDesignation)
         val cv = ContentValues()
-        var rs = contentResolver.query(AcronymProvider.CONTENT_URI,
+        val rs = contentResolver.query(AcronymProvider.CONTENT_URI,
             arrayOf(AcronymProvider.ID,AcronymProvider.NAME,AcronymProvider.DESIGNATION),null,null, AcronymProvider.NAME)
 
         buttonNext.setOnClickListener {
@@ -51,19 +54,19 @@ class MainActivity : AppCompatActivity() {
         buttonUpdate.setOnClickListener {
             cv.put(AcronymProvider.DESIGNATION,editTextDesignation.text.toString())
             contentResolver.update(AcronymProvider.CONTENT_URI,cv,"NAME = ?", arrayOf(editTextName.text.toString()))
+            contentResolver.update(AcronymProvider.CONTENT_URI,cv,"DESIGNATION = ?", arrayOf(editTextDesignation.text.toString()))
             rs?.requery()
         }
 
         buttonDelete.setOnClickListener {
             contentResolver.delete(AcronymProvider.CONTENT_URI,"NAME = ?", arrayOf(editTextName.text.toString()))
+            contentResolver.delete(AcronymProvider.CONTENT_URI,"DESIGNATION = ?", arrayOf(editTextDesignation.text.toString()))
             rs?.requery()
         }
 
         buttonClear.setOnClickListener {
-            if(rs?.moveToNext()!!){
                 editTextName.setText("")
                 editTextDesignation.setText("")
-            }
         }
     }
 }

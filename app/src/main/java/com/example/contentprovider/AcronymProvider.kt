@@ -9,7 +9,7 @@ import android.net.Uri
 class AcronymProvider : ContentProvider() {
 
     companion object {
-        private const val PROVIDER_NAME = "package com.example.contentprovider/AcronymProvider"
+        private const val PROVIDER_NAME = "com.example.contentprovider/AcronymProvider"
         private const val URL = "content://$PROVIDER_NAME/ATABLE"
         val CONTENT_URI: Uri = Uri.parse(URL)
 

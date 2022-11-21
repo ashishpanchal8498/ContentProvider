@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <provider
-            android:authorities="package com.example.content-provider"
+            android:authorities="com.example.contentprovider"
             android:name=".AcronymProvider"
             android:grantUriPermissions="true"
             android:exported="false" />
