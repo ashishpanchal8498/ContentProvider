@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val buttonNext: Button = findViewById(R.id.buttonNext)
         val buttonPrevious: Button = findViewById(R.id.buttonPrevious)
-        val buttonInsert: Button = findViewById(R.id.buttonInsert)
+        val buttonInsert: Button = findViewById(R.id.button)
         val buttonUpdate: Button = findViewById(R.id.buttonUpdate)
         val buttonDelete: Button = findViewById(R.id.buttonDelete)
         val buttonClear: Button = findViewById(R.id.buttonClear)
